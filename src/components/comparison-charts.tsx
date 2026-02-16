@@ -54,7 +54,7 @@ export function ComparisonCharts({ cards }: { cards: CardParsed[] }) {
                         const cardIdx = parseInt(entry.name.replace('card', ''));
                         return (
                             <p key={i} className="text-xs" style={{ color: COLORS[cardIdx] }}>
-                                {cards[cardIdx]?.name}: <span className="font-semibold">{typeof entry.value === 'number' ? entry.value.toLocaleString() : entry.value}</span>
+                                {cards[cardIdx]?.name}: <span className="font-semibold">{typeof entry.value === 'number' ? entry.value.toLocaleString('en-IN') : entry.value}</span>
                             </p>
                         );
                     })}

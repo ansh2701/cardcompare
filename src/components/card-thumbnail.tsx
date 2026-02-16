@@ -79,7 +79,7 @@ export function CardThumbnail({ card }: { card: CardParsed }) {
                         <div className="bg-secondary/50 rounded-lg px-2.5 py-1.5">
                             <div className="text-[10px] text-muted-foreground">Annual Fee</div>
                             <div className="text-sm font-semibold">
-                                {card.annualFee === 0 ? <span className="text-emerald-500">FREE</span> : `₹${card.annualFee.toLocaleString()}`}
+                                {card.annualFee === 0 ? <span className="text-emerald-500">FREE</span> : `₹${card.annualFee.toLocaleString('en-IN')}`}
                             </div>
                         </div>
                         <div className="bg-secondary/50 rounded-lg px-2.5 py-1.5">

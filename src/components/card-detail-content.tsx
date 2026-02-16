@@ -183,7 +183,7 @@ export function CardDetailContent({ card }: { card: CardParsed }) {
                                         <span className="text-sm font-medium">
                                             {typeof value === 'number'
                                                 ? key.toLowerCase().includes('income') || key.toLowerCase().includes('balance')
-                                                    ? `₹${value.toLocaleString()}`
+                                                    ? `₹${value.toLocaleString('en-IN')}`
                                                     : value
                                                 : Array.isArray(value) ? value.join(', ') : String(value)}
                                         </span>

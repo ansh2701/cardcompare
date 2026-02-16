@@ -52,12 +52,12 @@ export default function ComparePage() {
         },
         {
             label: 'Annual Fee',
-            get: (c) => c.annualFee === 0 ? <span className="text-emerald-500 font-semibold">FREE</span> : `₹${c.annualFee.toLocaleString()}`,
+            get: (c) => c.annualFee === 0 ? <span className="text-emerald-500 font-semibold">FREE</span> : `₹${c.annualFee.toLocaleString('en-IN')}`,
             highlight: true,
         },
         {
             label: 'Joining Fee',
-            get: (c) => c.joiningFee === 0 ? <span className="text-emerald-500 font-semibold">FREE</span> : `₹${c.joiningFee.toLocaleString()}`,
+            get: (c) => c.joiningFee === 0 ? <span className="text-emerald-500 font-semibold">FREE</span> : `₹${c.joiningFee.toLocaleString('en-IN')}`,
         },
         {
             label: 'Rewards Type',
