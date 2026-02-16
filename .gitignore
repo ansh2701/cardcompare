@@ -42,9 +42,9 @@ next-env.d.ts
 
 /src/generated/prisma
 
-# database
-*.db
+# database (cards.db is committed for Vercel deployment)
 *.db-journal
+*.db-wal
 
 # gemini
 .gemini/
