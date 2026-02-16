@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   // Mark better-sqlite3 as a server-external package so it doesn't get bundled
   serverExternalPackages: ["better-sqlite3"],
 
@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
 
   // Ensure cards.db is included in the serverless function bundle
   experimental: {
-    // @ts-expect-error: outputFileTracingIncludes is valid but missing from type definition
     outputFileTracingIncludes: {
       "/api/**/*": ["./cards.db"],
       "/**/*": ["./cards.db"],
