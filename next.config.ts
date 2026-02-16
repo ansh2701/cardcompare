@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
 
   // Ensure cards.db is included in the serverless function bundle
   experimental: {
+    // @ts-expect-error: outputFileTracingIncludes is valid but missing from type definition
     outputFileTracingIncludes: {
       "/api/**/*": ["./cards.db"],
       "/**/*": ["./cards.db"],
