@@ -7,10 +7,16 @@ let db: Database.Database | null = null;
 
 export function getDb(): Database.Database {
     if (!db) {
-        db = new Database(DB_PATH);
-        db.pragma('journal_mode = WAL');
-        db.pragma('foreign_keys = ON');
-        initializeDb(db);
+        const options: Database.Options = {
+            readonly: process.env.NODE_ENV === 'production',
+            fileMustExist: true,
+        };
+        db = new Database(DB_PATH, options);
+
+        if (!options.readonly) {
+            db.pragma('journal_mode = WAL');
+            initializeDb(db);
+        }
     }
     return db;
 }
