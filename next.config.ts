@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
 
   // Output standalone mode for deployment
   output: "standalone",
+
+  // Ensure cards.db is included in the serverless function bundle
+  experimental: {
+    outputFileTracingIncludes: {
+      "/api/**/*": ["./cards.db"],
+      "/**/*": ["./cards.db"],
+    },
+  },
 };
 
 export default nextConfig;
