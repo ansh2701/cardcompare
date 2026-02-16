@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CardCompare — Credit Card Comparison Platform
 
-## Getting Started
+A modern, full-stack credit card comparison platform built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, and **SQLite**. Browse, filter, search, and compare 36+ Indian credit, debit, forex, and prepaid cards — with an AI chatbot powered by **Groq**.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?logo=tailwindcss)
+![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite)
+
+## ✨ Features
+
+- **Browse Cards** — 36+ cards across credit, debit, forex, and prepaid categories
+- **Smart Filters** — Filter by card type, network (Visa/Mastercard/Amex/RuPay), issuer, rewards type
+- **Sort & Search** — Sort by popularity, rating, fee, rewards; full-text search
+- **Card Details** — Visual card preview, key stats, features, benefits, eligibility, fee structure
+- **Side-by-Side Comparison** — Compare up to 4 cards with detailed attribute table
+- **Visual Charts** — Recharts bar & radar charts for fee/rewards/overall comparison
+- **AI Chatbot** — Groq-powered assistant with RAG context from the card database
+- **Dark Theme** — Premium glassmorphism design with smooth animations
+- **Responsive** — Mobile-first design with hamburger nav and scrollable tables
+
+## 🚀 Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Seed the database (36 cards)
+node prisma/seed.js
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🤖 AI Chatbot Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The chatbot requires a free [Groq API key](https://console.groq.com):
 
-## Learn More
+```bash
+# Add to .env
+GROQ_API_KEY="gsk_your_key_here"
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── page.tsx                 # Homepage (hero, categories, featured cards)
+│   ├── cards/
+│   │   ├── page.tsx             # Card listing (search, filters, pagination)
+│   │   └── [slug]/page.tsx      # Card detail page
+│   ├── compare/page.tsx         # Side-by-side comparison
+│   └── api/
+│       ├── cards/route.ts       # Cards API (filter, sort, search, paginate)
+│       ├── search/route.ts      # Search autocomplete API
+│       └── chat/route.ts        # Groq AI chat API (streaming + RAG)
+├── components/
+│   ├── navbar.tsx               # Responsive navigation
+│   ├── footer.tsx               # Site footer
+│   ├── card-thumbnail.tsx       # Card preview component
+│   ├── card-detail-content.tsx  # Card detail view
+│   ├── comparison-bar.tsx       # Floating compare bar
+│   ├── comparison-charts.tsx    # Recharts bar + radar charts
+│   ├── chat-widget.tsx          # Floating AI chat panel
+│   └── home-card-grid.tsx       # Card grid wrapper
+├── lib/
+│   └── db.ts                    # SQLite database helper (CRUD, filter, search)
+└── store/
+    └── comparison-store.ts      # Zustand store (compare state, localStorage)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 + shadcn/ui |
+| Database | SQLite via better-sqlite3 |
+| State | Zustand (localStorage persistence) |
+| Charts | Recharts |
+| AI | Groq SDK (Llama 3.3 70B) |
+| Icons | Lucide React |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

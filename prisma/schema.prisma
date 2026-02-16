@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Card {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  issuer          String
+  cardType        String   // credit, debit, forex, prepaid
+  network         String   // Visa, Mastercard, Amex, RuPay
+  annualFee       Float    @default(0)
+  joiningFee      Float    @default(0)
+  interestRate    Float?
+  cashbackRate    Float?
+  rewardsRate     Float?
+  rewardsType     String?  // cashback, points, miles
+  welcomeBonus    String?
+  features        String   @default("[]") // JSON array
+  benefits        String   @default("[]") // JSON array
+  eligibility     String   @default("{}") // JSON object
+  fees            String   @default("{}") // JSON object
+  imageUrl        String?
+  cardColor       String   @default("#1a1a2e")
+  cardGradient    String   @default("linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)")
+  rating          Float    @default(4.0)
+  popularityScore Int      @default(0)
+  isPopular       Boolean  @default(false)
+  highlight       String?  // e.g. "5% cashback on dining"
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
